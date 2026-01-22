@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI PDF Editor - Edit, Convert, Chat with PDFs</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/themes.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="light-theme">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <i class="fas fa-file-pdf"></i>
+                <span>AI<span class="logo-highlight">PDF</span>Editor</span>
+            </a>
+            
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link active">Home</a>
+                <a href="editor.html" class="nav-link">Editor</a>
+                <a href="chat-pdf.html" class="nav-link">Chat with PDF</a>
+                <a href="pricing.html" class="nav-link">Pricing</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+            
+            <div class="nav-actions">
+                <button class="btn btn-outline" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <a href="login.html" class="btn btn-outline">Login</a>
+                <a href="signup.html" class="btn btn-primary">Sign Up Free</a>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">AI-Powered PDF Editor</h1>
+                <p class="hero-subtitle">Edit, convert, compress, and chat with your PDFs using advanced AI technology.</p>
+                
+                <div class="hero-actions">
+                    <button class="btn btn-primary btn-lg" id="uploadTrigger">
+                        <i class="fas fa-upload"></i> Upload PDF
+                    </button>
+                    <button class="btn btn-outline btn-lg">
+                        <i class="fas fa-play-circle"></i> See Demo
+                    </button>
+                </div>
+                
+                <div class="file-drop-zone" id="dropZone">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <h3>Drag & Drop your PDF here</h3>
+                    <p>or click to browse files</p>
+                    <input type="file" id="fileInput" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" hidden>
+                    <p class="file-info">Supports PDF, Word, Images (Max 100MB)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section features">
+        <div class="container">
+            <h2 class="section-title">Everything You Need for PDFs</h2>
+            <p class="section-subtitle">Powerful tools powered by AI</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-edit"></i>
+                    </div>
+                    <h3>Edit PDFs</h3>
+                    <p>Edit text, add images, highlight, draw, and annotate directly in your PDF.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>AI Tools</h3>
+                    <p>Summarize, chat with, and extract key points from PDFs using AI.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-compress-arrows-alt"></i>
+                    </div>
+                    <h3>Compress</h3>
+                    <p>Reduce PDF file size without losing quality.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <h3>Convert</h3>
+                    <p>Convert PDF to Word, Excel, Images and vice versa.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-object-group"></i>
+                    </div>
+                    <h3>Merge & Split</h3>
+                    <p>Combine multiple PDFs or split PDF into separate pages.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3>Secure</h3>
+                    <p>Your files are processed securely and deleted automatically.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Tools Section -->
+    <section class="section ai-tools">
+        <div class="container">
+            <h2 class="section-title">Revolutionary AI Features</h2>
+            
+            <div class="ai-tools-grid">
+                <div class="ai-tool-card">
+                    <div class="ai-tool-header">
+                        <i class="fas fa-comment-dots"></i>
+                        <h3>Chat with PDF</h3>
+                    </div>
+                    <p>Ask questions about your PDF content and get instant answers from AI.</p>
+                    <a href="chat-pdf.html" class="btn btn-outline">Try Now</a>
+                </div>
+                
+                <div class="ai-tool-card">
+                    <div class="ai-tool-header">
+                        <i class="fas fa-clipboard-list"></i>
+                        <h3>AI Summary</h3>
+                    </div>
+                    <p>Get concise summaries of long documents in seconds.</p>
+                    <button class="btn btn-outline">Learn More</button>
+                </div>
+                
+                <div class="ai-tool-card">
+                    <div class="ai-tool-header">
+                        <i class="fas fa-key"></i>
+                        <h3>Key Points</h3>
+                    </div>
+                    <p>Automatically extract key points and important information.</p>
+                    <button class="btn btn-outline">Learn More</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section cta">
+        <div class="container">
+            <h2>Ready to Transform Your PDF Workflow?</h2>
+            <p>Join thousands of users who save time with our AI-powered PDF tools.</p>
+            <a href="signup.html" class="btn btn-primary btn-lg">Get Started Free</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="#" class="footer-logo">
+                        <i class="fas fa-file-pdf"></i>
+                        <span>AI<span class="logo-highlight">PDF</span>Editor</span>
+                    </a>
+                    <p>AI-powered PDF editing and conversion tools for professionals.</p>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Product</h4>
+                    <a href="editor.html">PDF Editor</a>
+                    <a href="chat-pdf.html">Chat with PDF</a>
+                    <a href="#">Convert PDF</a>
+                    <a href="#">Compress PDF</a>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <a href="pricing.html">Pricing</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Connect</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 AI PDF Editor. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <div class="toast-content">
+            <i class="fas fa-check-circle"></i>
+            <span class="toast-message">File uploaded successfully!</span>
+        </div>
+        <button class="toast-close">&times;</button>
+    </div>
+
+    <!-- Upload Progress Modal -->
+    <div class="modal" id="uploadModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Uploading File</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="uploadProgress"></div>
+                </div>
+                <p class="progress-text" id="progressText">0% uploaded</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

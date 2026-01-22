@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Editor - AI PDF Editor</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/themes.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="light-theme">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <i class="fas fa-file-pdf"></i>
+                <span>AI<span class="logo-highlight">PDF</span>Editor</span>
+            </a>
+            
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="editor.html" class="nav-link active">Editor</a>
+                <a href="chat-pdf.html" class="nav-link">Chat with PDF</a>
+                <a href="pricing.html" class="nav-link">Pricing</a>
+            </div>
+            
+            <div class="nav-actions">
+                <button class="btn btn-outline" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="btn btn-primary" id="downloadBtn">
+                    <i class="fas fa-download"></i> Download
+                </button>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Editor Layout -->
+    <div class="editor-container">
+        <!-- Sidebar Tools -->
+        <aside class="editor-sidebar" id="editorSidebar">
+            <div class="sidebar-header">
+                <h3>Tools</h3>
+                <button class="sidebar-toggle" id="sidebarToggle">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+            </div>
+            
+            <div class="tool-categories">
+                <!-- Edit Tools -->
+                <div class="tool-category">
+                    <h4><i class="fas fa-edit"></i> Edit</h4>
+                    <div class="tool-buttons">
+                        <button class="tool-btn" data-tool="text">
+                            <i class="fas fa-font"></i> Add Text
+                        </button>
+                        <button class="tool-btn" data-tool="highlight">
+                            <i class="fas fa-highlighter"></i> Highlight
+                        </button>
+                        <button class="tool-btn" data-tool="underline">
+                            <i class="fas fa-underline"></i> Underline
+                        </button>
+                        <button class="tool-btn" data-tool="draw">
+                            <i class="fas fa-pen"></i> Draw
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Insert Tools -->
+                <div class="tool-category">
+                    <h4><i class="fas fa-plus-circle"></i> Insert</h4>
+                    <div class="tool-buttons">
+                        <button class="tool-btn" data-tool="image">
+                            <i class="fas fa-image"></i> Add Image
+                        </button>
+                        <button class="tool-btn" data-tool="signature">
+                            <i class="fas fa-signature"></i> Signature
+                        </button>
+                        <button class="tool-btn" data-tool="shape">
+                            <i class="fas fa-shapes"></i> Shapes
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- PDF Tools -->
+                <div class="tool-category">
+                    <h4><i class="fas fa-file-pdf"></i> PDF Tools</h4>
+                    <div class="tool-buttons">
+                        <button class="tool-btn" id="mergeBtn">
+                            <i class="fas fa-object-group"></i> Merge PDFs
+                        </button>
+                        <button class="tool-btn" id="splitBtn">
+                            <i class="fas fa-cut"></i> Split PDF
+                        </button>
+                        <button class="tool-btn" id="compressBtn">
+                            <i class="fas fa-compress-arrows-alt"></i> Compress
+                        </button>
+                        <button class="tool-btn" id="convertBtn">
+                            <i class="fas fa-exchange-alt"></i> Convert
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- AI Tools -->
+                <div class="tool-category">
+                    <h4><i class="fas fa-robot"></i> AI Tools</h4>
+                    <div class="tool-buttons">
+                        <button class="tool-btn" id="summarizeBtn">
+                            <i class="fas fa-clipboard-list"></i> Summarize
+                        </button>
+                        <button class="tool-btn" id="chatBtn">
+                            <i class="fas fa-comment-dots"></i> Chat with PDF
+                        </button>
+                        <button class="tool-btn" id="extractBtn">
+                            <i class="fas fa-key"></i> Extract Key Points
+                        </button>
+                        <button class="tool-btn" id="grammarBtn">
+                            <i class="fas fa-spell-check"></i> Grammar Check
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Properties Panel -->
+            <div class="properties-panel" id="propertiesPanel">
+                <h4>Properties</h4>
+                <div class="property-group">
+                    <label>Font Size</label>
+                    <input type="range" id="fontSize" min="8" max="72" value="12">
+                </div>
+                <div class="property-group">
+                    <label>Color</label>
+                    <input type="color" id="textColor" value="#000000">
+                </div>
+                <div class="property-group">
+                    <label>Highlight Color</label>
+                    <input type="color" id="highlightColor" value="#ffff00">
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Editor Area -->
+        <main class="editor-main">
+            <!-- Editor Header -->
+            <div class="editor-header">
+                <div class="file-info">
+                    <h3 id="fileName">document.pdf</h3>
+                    <p id="fileStats">5 pages • 2.4 MB</p>
+                </div>
+                
+                <div class="editor-actions">
+                    <button class="btn btn-outline" id="undoBtn">
+                        <i class="fas fa-undo"></i> Undo
+                    </button>
+                    <button class="btn btn-outline" id="redoBtn">
+                        <i class="fas fa-redo"></i> Redo
+                    </button>
+                    <button class="btn btn-primary" id="saveBtn">
+                        <i class="fas fa-save"></i> Save Changes
+                    </button>
+                </div>
+            </div>
+            
+            <!-- PDF Viewer -->
+            <div class="pdf-viewer-container">
+                <div class="pdf-controls">
+                    <button class="btn-control" id="prevPage">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    
+                    <div class="page-info">
+                        <span id="currentPage">1</span> / <span id="totalPages">5</span>
+                    </div>
+                    
+                    <button class="btn-control" id="nextPage">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                    
+                    <div class="zoom-controls">
+                        <button class="btn-control" id="zoomOut">
+                            <i class="fas fa-search-minus"></i>
+                        </button>
+                        <span id="zoomLevel">100%</span>
+                        <button class="btn-control" id="zoomIn">
+                            <i class="fas fa-search-plus"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- PDF Canvas -->
+                <div class="pdf-canvas-container" id="pdfCanvasContainer">
+                    <canvas id="pdfCanvas"></canvas>
+                    
+                    <!-- Annotation Layer -->
+                    <div class="annotation-layer" id="annotationLayer"></div>
+                    
+                    <!-- Text Selection Overlay -->
+                    <div class="text-selection-overlay" id="textSelectionOverlay"></div>
+                </div>
+                
+                <!-- Pages Thumbnails -->
+                <div class="pages-thumbnails" id="pagesThumbnails">
+                    <!-- Thumbnails will be generated here -->
+                </div>
+            </div>
+            
+            <!-- Tool Specific Panels -->
+            <div class="tool-panels">
+                <!-- Text Edit Panel -->
+                <div class="tool-panel" id="textPanel">
+                    <h4>Text Editor</h4>
+                    <textarea id="textEditor" placeholder="Enter text to add to PDF..."></textarea>
+                    <button class="btn btn-primary" id="addTextBtn">Add Text</button>
+                </div>
+                
+                <!-- AI Summary Panel -->
+                <div class="tool-panel" id="summaryPanel">
+                    <h4>AI Summary</h4>
+                    <div class="summary-content" id="summaryContent">
+                        <!-- AI summary will appear here -->
+                    </div>
+                    <button class="btn btn-primary" id="generateSummaryBtn">
+                        <i class="fas fa-robot"></i> Generate Summary
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modals -->
+    <div class="modal" id="mergeModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Merge PDFs</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="file-list" id="mergeFileList">
+                    <!-- Files to merge will appear here -->
+                </div>
+                <input type="file" id="mergeFileInput" multiple accept=".pdf" hidden>
+                <button class="btn btn-outline" id="addMergeFileBtn">
+                    <i class="fas fa-plus"></i> Add PDFs
+                </button>
+                <button class="btn btn-primary" id="mergeProcessBtn">Merge PDFs</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal" id="convertModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Convert PDF</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="convert-options">
+                    <button class="convert-option" data-format="docx">
+                        <i class="fas fa-file-word"></i>
+                        <span>Word (.docx)</span>
+                    </button>
+                    <button class="convert-option" data-format="excel">
+                        <i class="fas fa-file-excel"></i>
+                        <span>Excel (.xlsx)</span>
+                    </button>
+                    <button class="convert-option" data-format="images">
+                        <i class="fas fa-images"></i>
+                        <span>Images (.png)</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <div class="toast-content">
+            <i class="fas fa-check-circle"></i>
+            <span class="toast-message">Operation completed successfully!</span>
+        </div>
+        <button class="toast-close">&times;</button>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/pdf-editor.js"></script>
+    <!-- PDF.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+</body>
+</html>
